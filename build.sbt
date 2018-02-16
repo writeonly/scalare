@@ -30,8 +30,8 @@ lazy val root = (project in file("."))
       commonSettings,
   libraryDependencies ++= Seq(
     "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-    "org.eclipse.jetty" % "jetty-webapp" % "9.4.8.v20171121" % "container",
     "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
+    "org.eclipse.jetty" % "jetty-webapp" % "9.4.8.v20171121" % "container",
   )
 )
 
@@ -42,7 +42,8 @@ lazy val main = (project in file("scalare-main"))
     name := "scalare-main",
     commonSettings,
     libraryDependencies ++= Seq(
-      "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided"
+      "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
+      "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
     )
   )
 
@@ -53,10 +54,11 @@ lazy val rest = (project in file("scalare-rest"))
     name := "scalare-rest",
     commonSettings,
     libraryDependencies ++= Seq(
-      "org.scalatra" %% "scalatra" % ScalatraVersion,
       "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
+      "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
       "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
-      "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided"
+
+      "org.scalatra" %% "scalatra" % ScalatraVersion,
     )
   )
 
