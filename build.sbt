@@ -6,7 +6,7 @@ name := "scalare"
 
 version := "2.6.0-SNAPSHOT"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.11.11"
 
 resolvers += Classpaths.typesafeReleases
 

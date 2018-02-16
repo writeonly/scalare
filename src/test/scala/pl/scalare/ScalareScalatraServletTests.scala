@@ -6,9 +6,9 @@ class ScalareScalatraServletTests extends ScalatraFunSuite {
 
   addServlet(classOf[ScalareScalatraServlet], "/*")
 
-  test("GET / on ScalareScalatraServlet should return status 200"){
-    get("/"){
-      status should equal (200)
+  test("GET / on ScalareScalatraServlet should return status 200") {
+    get("/") {
+      status should equal(200)
     }
   }
 
