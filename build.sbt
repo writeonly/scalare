@@ -13,26 +13,26 @@ lazy val commonSettings = Seq(
   version := VersionSnapshot
 )
 
-lazy val FunTest = config("fun") extend(Test)
-lazy val FeatureTest = config("feature") extend(Test)
+lazy val IntegrationTest = config("it") extend(Test)
+lazy val End2EndTest = config("et") extend(Test)
 
-lazy val funInConfig = inConfig(FunTest)(Defaults.testTasks)
-lazy val featureInConfig = inConfig(FeatureTest)(Defaults.testTasks)
+lazy val integrationInConfig = inConfig(IntegrationTest)(Defaults.testTasks)
+lazy val end2endInConfig = inConfig(End2EndTest)(Defaults.testTasks)
 
-def whiteFilter(name: String): Boolean = (name endsWith "ResultSpec") || (name endsWith "ThrowsSpec")
-def grayFilter(name: String): Boolean = (name endsWith "ScalarSpec") || (name endsWith "VectorSpec ")
-def blackFilter(name: String): Boolean = (name endsWith "FeatureSpec")
+def whiteFilter(name: String): Boolean = name endsWith "AssertSpec"
+def grayFilter(name: String): Boolean = (name endsWith "ScalarSpec") || (name endsWith "VectorSpec")
+def blackFilter(name: String): Boolean = (name endsWith "FunSpec") || (name endsWith "FeatureSpec")
 
 lazy val whiteSetting = testOptions in Test := Seq(Tests.Filter(whiteFilter))
-lazy val graySetting = testOptions in FunTest := Seq(Tests.Filter(grayFilter))
-lazy val blackSetting = testOptions in FeatureTest := Seq(Tests.Filter(blackFilter))
+lazy val graySetting = testOptions in IntegrationTest := Seq(Tests.Filter(grayFilter))
+lazy val blackSetting = testOptions in End2EndTest := Seq(Tests.Filter(blackFilter))
 
-lazy val inConfigs = Seq(funInConfig, featureInConfig)
+lazy val inConfigs = Seq(integrationInConfig, end2endInConfig)
 lazy val settings = Seq(whiteSetting, graySetting, blackSetting)
 
 lazy val root = (project in file("."))
   .dependsOn(main)
-    .configs(FunTest, FeatureTest)
+    .configs(IntegrationTest, End2EndTest)
   .settings(
   name := "scalare",
       commonSettings,
@@ -45,7 +45,7 @@ lazy val root = (project in file("."))
 
 lazy val main = (project in file("scalare-main"))
   .dependsOn(rest)
-  .configs(FunTest, FeatureTest)
+  .configs(IntegrationTest, End2EndTest)
   .settings(
     name := "scalare-main",
     commonSettings,
@@ -58,7 +58,7 @@ lazy val main = (project in file("scalare-main"))
 lazy val rest = (project in file("scalare-rest"))
     .dependsOn(spec)
 //  .dependsOn(japi, impl)
-  .configs(FunTest, FeatureTest)
+  .configs(IntegrationTest, End2EndTest)
   .settings(
     name := "scalare-rest",
     commonSettings,
@@ -72,7 +72,7 @@ lazy val rest = (project in file("scalare-rest"))
   )
 
 
-lazy val spec = (project in file("scalare-spec"))
+lazy val spec = (project in file("son2/son2-spec"))
   .settings(
     name := "scalare-spec",
     commonSettings,
