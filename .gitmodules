@@ -1,0 +1,3 @@
+[submodule "son2"]
+	path = son2
+	url = https://github.com/writeonly/son2.git
