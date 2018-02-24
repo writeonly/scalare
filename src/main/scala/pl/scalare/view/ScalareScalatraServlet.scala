@@ -1,4 +1,4 @@
-package pl.scalare
+package pl.scalare.view
 
 import org.scalatra._
 

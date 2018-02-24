@@ -1,6 +1,7 @@
 package pl.scalare
 
 import org.scalatra.test.scalatest._
+import pl.scalare.view.ScalareScalatraServlet
 
 class ScalareScalatraServletTests extends ScalatraFunSuite {
 
