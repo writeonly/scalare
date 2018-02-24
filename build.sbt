@@ -75,7 +75,7 @@ lazy val rest = (project in file("scalare-rest"))
     )
   )
 
-lazy val drop = (project in file("son2/son2-drop"))
+lazy val drop = (project in file("scalare-drop"))
   .dependsOn(spec, core, adin)
   .configs(IntegrationTest, End2EndTest)
   .settings(
@@ -91,8 +91,8 @@ lazy val drop = (project in file("son2/son2-drop"))
     mainClass in assembly := Some("pl.writeonly.son2.drop.AppSon2")
   )
 
-lazy val adin = (project in file("son2/son2-adin"))
-  .dependsOn(spec, core, json)
+lazy val adin = (project in file("scalare-adin"))
+  .dependsOn(spec, core, json, impl)
   .configs(IntegrationTest, End2EndTest)
   .settings(
     name := "son2/son2-adin",
