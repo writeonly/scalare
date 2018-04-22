@@ -3,13 +3,13 @@ enablePlugins(ScalatraPlugin)
 
 resolvers += Classpaths.typesafeReleases
 
-val ScalaVersion = "2.11.11"
+val ScalaVersion = "2.12.4"
 val ScalatraVersion = "2.6.2"
 val VersionSnapshot = "2.8.3-SNAPSHOT"
 val DropwizardVersion = "1.1.4"
 val JacksonVersion = "2.8.3"
 val VaadinVersion = "8.1.2"
-val ScalaLibraryVersion = "2.11.11"
+val ScalaLibraryVersion = ScalaVersion
 
 lazy val commonSettings = Seq(
   organization := "pl.writeonly.scalare",
@@ -232,7 +232,7 @@ lazy val spec = (project in file("son2/son2-spec"))
     name := "scalare-spec",
     commonSettings,
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-library" % "2.11.11",
+      "org.scala-lang" % "scala-library" % ScalaLibraryVersion,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
       "org.scalamock" %% "scalamock-scalatest-support" % "3.6.0",
       "org.scalacheck" %% "scalacheck" % "1.13.5",
